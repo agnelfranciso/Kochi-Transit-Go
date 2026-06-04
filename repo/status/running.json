@@ -1,0 +1,19 @@
+{
+  "commandLine": [
+    "D:\\fdroid-venv\\Scripts\\fdroid build",
+    "-v",
+    "app.agneldev.kochitransitgo"
+  ],
+  "fdroiddata": {
+    "commitId": "f52e002befe82d0d74e91ccb899985af88e26786",
+    "isDirty": false,
+    "modifiedFiles": [],
+    "untrackedFiles": [
+      "fdroid-readmeta-output.txt",
+      "fdroiddata/metadata/app.agneldev.kochitransitgo.yml",
+      "metadata/app.agneldev.kochitransitgo.yml"
+    ]
+  },
+  "startTimestamp": 1780564187000,
+  "subcommand": "build"
+}

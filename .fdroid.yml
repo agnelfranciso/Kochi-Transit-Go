@@ -1,0 +1,5 @@
+Builds:
+  - subdir: app
+    versionCode: 1
+    gradle:
+      - assembleRelease
