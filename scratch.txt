@@ -1,0 +1,96 @@
+﻿    private var trainUpdateHandler = android.os.Handler(android.os.Looper.getMainLooper())
+    private var trainUpdateRunnable: Runnable? = null
+    
+    private fun startTrainSimulation() {
+        trainUpdateRunnable = object : Runnable {
+            override fun run() {
+                drawActiveTrains()
+                trainUpdateHandler.postDelayed(this, 1000)
+            }
+        }
+        trainUpdateHandler.post(trainUpdateRunnable!!)
+    }
+
+    private fun getTrainPosition(tripId: String, currentTimeStr: String): org.osmdroid.util.GeoPoint? {
+        val stopTimes = GtfsRepository.stopTimes.filter { it.tripId == tripId }.sortedBy { it.stopSequence }
+        if (stopTimes.isEmpty()) return null
+        
+        var prevStop: StopTime? = null
+        var nextStop: StopTime? = null
+        for (i in 0 until stopTimes.size - 1) {
+            if (currentTimeStr >= stopTimes[i].departureTime && currentTimeStr <= stopTimes[i+1].arrivalTime) {
+                prevStop = stopTimes[i]
+                nextStop = stopTimes[i+1]
+                break
+            }
+        }
+        
+        if (prevStop != null && nextStop != null) {
+            val prevInfo = GtfsRepository.stops.find { it.stopId == prevStop.stopId }
+            val nextInfo = GtfsRepository.stops.find { it.stopId == nextStop.stopId }
+            if (prevInfo != null && nextInfo != null) {
+                val prevSec = timeToSeconds(prevStop.departureTime)
+                val nextSec = timeToSeconds(nextStop.arrivalTime)
+                val currSec = timeToSeconds(currentTimeStr)
+                
+                val fraction = if (nextSec > prevSec) {
+                    (currSec - prevSec).toFloat() / (nextSec - prevSec)
+                } else 0f
+                
+                val lat = prevInfo.stopLat + fraction * (nextInfo.stopLat - prevInfo.stopLat)
+                val lon = prevInfo.stopLon + fraction * (nextInfo.stopLon - prevInfo.stopLon)
+                return org.osmdroid.util.GeoPoint(lat, lon)
+            }
+        }
+        
+        val currentStop = stopTimes.find { currentTimeStr >= it.arrivalTime && currentTimeStr <= it.departureTime }
+        if (currentStop != null) {
+            val info = GtfsRepository.stops.find { it.stopId == currentStop.stopId }
+            if (info != null) return org.osmdroid.util.GeoPoint(info.stopLat, info.stopLon)
+        }
+        
+        // If arrived at last stop
+        if (currentTimeStr >= stopTimes.last().arrivalTime) {
+            val info = GtfsRepository.stops.find { it.stopId == stopTimes.last().stopId }
+            if (info != null) return org.osmdroid.util.GeoPoint(info.stopLat, info.stopLon)
+        }
+        
+        return null
+    }
+
+    private fun timeToSeconds(time: String): Int {
+        val parts = time.split(":")
+        return if (parts.size == 3) parts[0].toInt() * 3600 + parts[1].toInt() * 60 + parts[2].toInt() else 0
+    }
+
+    private fun drawActiveTrains() {
+        val markersToRemove = mapView.overlays.filterIsInstance<org.osmdroid.views.overlay.Marker>()
+        mapView.overlays.removeAll(markersToRemove)
+        
+        val currentTimeStr = SimpleDateFormat("HH:mm:ss", Locale.getDefault()).format(Date())
+        val tripsByRoute = GtfsRepository.stopTimes.groupBy { it.tripId }
+        
+        for ((tripId, stopTimes) in tripsByRoute) {
+            val sorted = stopTimes.sortedBy { it.stopSequence }
+            if (sorted.isEmpty()) continue
+            if (sorted.first().departureTime > currentTimeStr || sorted.last().arrivalTime < currentTimeStr) continue
+            
+            val geoPoint = getTrainPosition(tripId, currentTimeStr)
+            if (geoPoint != null) {
+                val marker = org.osmdroid.views.overlay.Marker(mapView)
+                marker.position = geoPoint
+                marker.setAnchor(org.osmdroid.views.overlay.Marker.ANCHOR_CENTER, org.osmdroid.views.overlay.Marker.ANCHOR_BOTTOM)
+                val icon = getDrawable(R.drawable.ic_directions_transit)?.mutate()
+                icon?.setTint(Color.parseColor("#00BFA5"))
+                marker.icon = icon
+                
+                marker.setOnMarkerClickListener { _, _ ->
+                    TrainTrackerBottomSheet(tripId).show(supportFragmentManager, "TrainTrackerBottomSheet")
+                    true
+                }
+                
+                mapView.overlays.add(marker)
+            }
+        }
+        mapView.invalidate()
+    }

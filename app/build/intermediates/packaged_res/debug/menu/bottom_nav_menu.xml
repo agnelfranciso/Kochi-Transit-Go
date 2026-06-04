@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/navigation_planner"
+        android:icon="@drawable/ic_schedule"
+        android:title="Go" />
+    <item
+        android:id="@+id/navigation_stations"
+        android:icon="@drawable/ic_schedule"
+        android:title="Stations" />
+    <item
+        android:id="@+id/navigation_map"
+        android:icon="@drawable/ic_map"
+        android:title="Live Map" />
+</menu>
