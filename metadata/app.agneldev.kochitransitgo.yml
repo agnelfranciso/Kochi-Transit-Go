@@ -1,0 +1,24 @@
+Categories:
+  - Navigation
+  - Public Transport
+License: MIT
+AuthorName: Agnel Francis Olakkengil
+SourceCode: https://github.com/agnelfranciso/Kochi-Transit-Go
+IssueTracker: https://github.com/agnelfranciso/Kochi-Transit-Go/issues
+
+AutoName: Kochi Transit Go
+
+RepoType: git
+Repo: https://github.com/agnelfranciso/Kochi-Transit-Go
+
+Builds:
+  - versionName: '1.0'
+    versionCode: 1
+    commit: 'f52e002befe82d0d74e91ccb899985af88e26786'
+    gradle:
+      - yes
+
+AutoUpdateMode: Version
+UpdateCheckMode: Tags
+CurrentVersion: '1.0'
+CurrentVersionCode: 1
