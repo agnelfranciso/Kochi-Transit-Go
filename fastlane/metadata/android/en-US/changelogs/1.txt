@@ -1,0 +1,1 @@
+Initial release of Kochi Transit Go. Features include offline route planning, fare calculation, train schedules, and station information for the full Kochi Metro network.
