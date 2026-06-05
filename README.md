@@ -26,7 +26,7 @@ This project is the native Android app. For the companion website, visit the [Ko
 
 | Route Planner | Station Guide | Fare Calculation | Tracker UI |
 | :---: | :---: | :---: | :---: |
-| <img src="fastlane/metadata/android/en-US/images/phoneScreenshots/1.png" width="200" alt="Route Planner"/> | <img src="fastlane/metadata/android/en-US/images/phoneScreenshots/2.png" width="200" alt="Station Guide"/> | <img src="fastlane/metadata/android/en-US/images/phoneScreenshots/3.png" width="200" alt="Fare Calculation"/> | <img src="fastlane/metadata/android/en-US/images/phoneScreenshots/4.png" width="200" alt="Tracker UI"/> |
+| <img src="fastlane/metadata/android/en-US/images/phoneScreenshots/1.png" width="200" alt="Route Planner"/> | <img src="fastlane/metadata/android/en-US/images/phoneScreenshots/2.png" width="200" alt="Station Guide"/> | <img src="fastlane/metadata/android/en-US/images/phoneScreenshots/3.png" width="200" alt="Live Routes"/> | <img src="fastlane/metadata/android/en-US/images/phoneScreenshots/4.png" width="200" alt="Settings UI"/> |
 
 ---
 
