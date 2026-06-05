@@ -17,7 +17,7 @@ Builds:
     commit: 339e1e0a232a3de1ec3700069bd7e2acfb4d88bf
     subdir: app
     gradle:
-      - assembleRelease
+      - yes
 
 AutoUpdateMode: Version
 UpdateCheckMode: Tags
