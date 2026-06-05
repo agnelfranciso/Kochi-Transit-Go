@@ -1,10 +1,10 @@
-**Kochi Transit Go** is the definitive, privacy-respecting transit companion for the Kochi Metro system. Built from the ground up as a native Android app, it provides instantaneous access to train schedules, routes, and fare calculations without ever requiring an internet connection.
+Kochi Transit Go is the definitive, privacy-respecting transit companion for the Kochi Metro system. Built from the ground up as a native Android app, it provides instantaneous access to train schedules, routes, and fare calculations without ever requiring an internet connection.
 
-### Features
-*   **100% Offline Mode**: All official GTFS schedules are bundled locally. Plan trips even deep underground.
-*   **Instant Fare Calculator**: Know exactly how much your trip will cost before you reach the station.
-*   **GPS Station Locator**: Automatically detects the nearest metro station using your device's location.
-*   **Live Tracker**: See upcoming departures and platform directions.
-*   **Privacy First**: No analytics, no ad trackers, and no unnecessary permissions. Your location data stays on your device.
+Features:
+- Offline Mode: All official GTFS schedules are bundled locally. Plan trips even deep underground.
+- Instant Fare Calculator: Know exactly how much your trip will cost before you reach the station.
+- GPS Station Locator: Automatically detects the nearest metro station using your device's location.
+- Live Tracker: See upcoming departures and platform directions.
+- Privacy First: No analytics, no ad trackers, and no unnecessary permissions. Your location data stays on your device.
 
-*This app is fully open-source under the MIT License and uses official Kochi Metro Open GTFS data.*
+This app is fully open-source under the MIT License and uses official Kochi Metro Open GTFS data.

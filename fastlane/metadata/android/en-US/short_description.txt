@@ -1,1 +1,1 @@
-100% offline Kochi Metro route planner and fare calculator. Fast, Free, and Private.
+Offline Kochi Metro route planner and fare calculator. Fast, Free & Private.
