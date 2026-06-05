@@ -1,6 +1,5 @@
 Categories:
   - Navigation
-  - Public Transport
 License: MIT
 AuthorName: Agnel Francis Olakkengil
 SourceCode: https://github.com/agnelfranciso/Kochi-Transit-Go
@@ -19,7 +18,6 @@ Builds:
     gradle:
       - yes
     scanignore:
-      - .gradle/**
       - app/src/main/res/font/google_sans_flex.ttf
 
 AutoUpdateMode: Version

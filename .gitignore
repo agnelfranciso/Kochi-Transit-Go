@@ -5,7 +5,7 @@ local.properties
 tmp/
 logs/
 unsigned/
-repo/status/
+repo/
 fdroiddata/
 srclibs/
 fdroid-readmeta-output.txt
