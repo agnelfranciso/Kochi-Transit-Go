@@ -13,7 +13,7 @@ Repo: https://github.com/agnelfranciso/Kochi-Transit-Go
 Builds:
   - versionName: '1.0'
     versionCode: 1
-    commit: 925bfc79e73523cb1af3fdaa37aaa26d34ec6a8e
+    commit: 11e98c5f3569b5a46803db2170a8830254998222
     subdir: app
     gradle:
       - yes
