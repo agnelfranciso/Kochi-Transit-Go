@@ -18,6 +18,9 @@ Builds:
     subdir: app
     gradle:
       - yes
+    scanignore:
+      - .gradle/**
+      - app/src/main/res/font/google_sans_flex.ttf
 
 AutoUpdateMode: Version
 UpdateCheckMode: Tags
